@@ -1,16 +1,16 @@
 import { InMemoryParticipationRepository } from 'src/webinars/adapters/participation-repository.in-memory';
-import { InMemoryUserRepository } from 'src/users/adapters/user-repository.in-memory';
+import { InMemoryUser } from 'src/users/adapters/in-memory-users';
 import { InMemoryWebinarRepository } from 'src/webinars/adapters/webinar-repository.in-memory';
 import { BookSeat } from 'src/webinars/use-cases/book-seat';
 import { User } from 'src/users/entities/user.entity';
 import { Webinar } from 'src/webinars/entities/webinar.entity';
 import { Participation } from 'src/webinars/entities/participation.entity';
-import { FakeMailer } from 'src/core/adapters/fake-mailer';
+import { InMemoryMailer } from 'src/core/adapters/in-memory-mailer';
 
 describe('Feature: Book seat', () => {
   let webinarRepository: InMemoryWebinarRepository;
   let participationRepository: InMemoryParticipationRepository;
-  let userRepository: InMemoryUserRepository;
+  let userRepository: InMemoryUser;
   let mailer: FakeMailer;
   let useCase: BookSeat;
 
@@ -32,8 +32,8 @@ describe('Feature: Book seat', () => {
   beforeEach(() => {
     webinarRepository = new InMemoryWebinarRepository();
     participationRepository = new InMemoryParticipationRepository();
-    userRepository = new InMemoryUserRepository();
-    mailer = new FakeMailer();
+    userRepository = new InMemoryUser();
+    mailer = new InMemoryMailer();
 
     useCase = new BookSeat(
       participationRepository,
