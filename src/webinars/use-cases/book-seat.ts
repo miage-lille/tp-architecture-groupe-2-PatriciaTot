@@ -6,9 +6,10 @@ import { IParticipationRepository } from 'src/webinars/ports/participation-repos
 import { IWebinarRepository } from 'src/webinars/ports/webinar-repository.interface';
 import { Participation } from 'src/webinars/entities/participation.entity';
 
+// Données nécessaires pour réserver une place
 type Request = {
-  webinarId: string;
-  user: User;
+  webinarId: string; // Identifiant du webinaire
+  user: User; // Utilisateur qui réserve la place
 };
 type Response = void;
 

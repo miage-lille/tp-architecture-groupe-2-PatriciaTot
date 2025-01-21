@@ -11,13 +11,13 @@ describe('Feature: Book seat', () => {
   let webinarRepository: InMemoryWebinarRepository;
   let participationRepository: InMemoryParticipationRepository;
   let userRepository: InMemoryUser;
-  let mailer: FakeMailer;
+  let mailer: InMemoryMailer;
   let useCase: BookSeat;
 
   const user = new User({
     id: 'user-1',
     email: 'user1@example.com',
-    name: 'User One',
+    password: 'mypassword',
   });
 
   const webinar = new Webinar({
